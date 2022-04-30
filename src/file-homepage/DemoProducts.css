@@ -1,0 +1,12 @@
+.contaienr-newhome .slick-track, .demo_slider  .slick-track  {
+     display: flex !important;
+     justify-content: space-between;
+}
+
+.demo_slider .slick-track .slick-slide {
+     width: 20% !important; 
+}
+
+.contaienr-newhome .slick-track .slick-slide {
+     width: 30% !important;
+}

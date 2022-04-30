@@ -1,0 +1,25 @@
+.slide-prev-footer {
+     position: absolute !important;
+     top: -40px;
+     padding: 20px 0;
+     color: white;
+     border-bottom-left-radius: 50px;
+     border-top-right-radius: 50px;
+}
+
+.slide-prev-footer .item_slider {
+     display: flex !important;
+     justify-content: center !important;
+     align-items: center !important;
+}
+
+.opacity-context {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 30%;
+     background-image: linear-gradient(white, rgb(233, 233, 233), white);
+     opacity: 0.5;
+}
+/* width-screen absolute -top-10 py-5 bg-orange-500 text-white grid grid-cols-3 */
