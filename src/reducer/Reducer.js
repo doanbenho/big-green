@@ -1,4 +1,4 @@
-import { ADD_ITEM, DATA_ITEM, DECREASE_ITEM, INCREASE_ITEM, INFO_USER, IS_USER, ITEM_AWAIT, ITEM_LOVE, OPEN_CART, OPEN_NAVBAR, REMOVE_ALL, REMOVE_ITEM, SERACH_VALUE } from "./Constant";
+import { ADD_ITEM, DATA_ITEM, DECREASE_ITEM, INCREASE_ITEM, INFO_USER, IS_USER, ITEM_AWAIT, OPEN_CART, OPEN_NAVBAR, REMOVE_ALL, REMOVE_ITEM, SERACH_VALUE, VOUCHER } from "./Constant";
 
 const items = JSON.parse(localStorage.getItem('items_in_cart')) || []
 
@@ -11,7 +11,7 @@ export const initialState = {
      info_user: {},
      search_value: '',
      open_navbar: false,
-     item_love: []
+     set_voucher: {"percent": 1, "is_voucher": false},
 }
 
 const reducer = (state, action) => {
@@ -124,10 +124,10 @@ const reducer = (state, action) => {
                     open_navbar: action.payload
                }
                break;
-          case ITEM_LOVE:
+          case VOUCHER:
                data = {
                     ...state,
-                    item_love: action.payload
+                    set_voucher: action.payload
                }
                break;
           default:

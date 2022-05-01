@@ -3,6 +3,7 @@ import HeaderOfPage from './HeaderOfPage'
 import {  content_newspage_2 } from '../map-content/MapContent'
 // import ItemNews from './ItemNews'
 import { Outlet, useNavigate } from 'react-router-dom'
+import { gototop } from '../map-content/ContentNews'
 
 
 
@@ -13,6 +14,7 @@ const NewsPage = () => {
 
      const handleShowContent = (item) => {
           navigate(`/tin-tuc/${item.id}`)
+          gototop()
      }
 
   return (

@@ -5,6 +5,7 @@ import { PaternProduct } from './PaternProduct'
 import React, { useEffect, useState } from 'react'
 import { removeAccents } from '../function/removeAccents'
 import { setupproducts } from '../fakeAPI'
+import { gototop } from '../map-content/ContentNews'
 
 
 setupproducts()
@@ -50,12 +51,7 @@ const ContentProductsPage = () => {
 
      const handleGetItem = value => { 
           setShowItems(totalItems.slice(12*(value - 1), 12*value))
-          const timer = setInterval(() => {
-               document.documentElement.scrollTop -= 200;
-               if(document.documentElement.scrollTop <= 0) {
-                   clearInterval(timer)
-               }
-           }, 10)
+          gototop()
      }
  
 

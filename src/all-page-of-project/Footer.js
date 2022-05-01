@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import PrevFooter from '../component/PrevFooter'
 import logo from '../image-green-food/logo.webp'
+import { gototop } from '../map-content/ContentNews'
 import { navigate } from '../map-content/MapContent'
 
 const helpclient = [
@@ -44,12 +45,7 @@ const Footer = () => {
                                         className='hover:text-black first-letter:uppercase'
                                         to={item['url-to']}
                                         onClick={() => {
-                                             const timer = setInterval(() => {
-                                                  document.documentElement.scrollTop -= 500;
-                                                  if(document.documentElement.scrollTop <= 0) {
-                                                      clearInterval(timer)
-                                                  }
-                                             }, 1)
+                                             gototop()
                                         }}
                                    >{item.title}</Link>
                               ))
@@ -66,12 +62,7 @@ const Footer = () => {
                                         className='hover:text-black'
                                         to={item['url-to']}     
                                         onClick={() => {
-                                             const timer = setInterval(() => {
-                                                  document.documentElement.scrollTop -= 500;
-                                                  if(document.documentElement.scrollTop <= 0) {
-                                                      clearInterval(timer)
-                                                  }
-                                             }, 1)
+                                             gototop()
                                         }}
                                    >{item.title}</Link>
                               ))

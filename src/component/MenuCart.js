@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Context from '../reducer/Context'
 import { decreaseItem, increaseItem, openCart, removeItem } from '../reducer/Actions'
+import { gototop } from '../map-content/ContentNews'
 
 const MenuCart = () => {
 
@@ -49,6 +50,7 @@ const MenuCart = () => {
                                    onClick={() => {
                                         dispatch(openCart(false))
                                         navigate('/san-pham')
+                                        gototop()
                                    }}
                               ></i>
                               <p className='text-black opacity-70 mt-2 mb-5'>Không có sản phẩm nào trong giỏ hàng của bạn</p>

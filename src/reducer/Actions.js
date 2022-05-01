@@ -1,4 +1,4 @@
-import { ADD_ITEM, DATA_ITEM, DECREASE_ITEM, INCREASE_ITEM, INFO_USER, IS_USER, ITEM_AWAIT, ITEM_LOVE, OPEN_CART, OPEN_NAVBAR, REMOVE_ALL, REMOVE_ITEM, SERACH_VALUE } from "./Constant"
+import { ADD_ITEM, DATA_ITEM, DECREASE_ITEM, INCREASE_ITEM, INFO_USER, IS_USER, ITEM_AWAIT, ITEM_LOVE, OPEN_CART, OPEN_NAVBAR, REMOVE_ALL, REMOVE_ITEM, SERACH_VALUE, VOUCHER } from "./Constant"
 
 const setData = payload => {
      return {
@@ -91,7 +91,13 @@ const itemLove = payload => {
      }
 } 
 
+const setVoucher = payload => {
+     return {
+          type: VOUCHER,
+          payload
+     }
+} 
 export { setData, openCart, addItem, removeItem, increaseItem, 
           decreaseItem, itemAwait, isUser, removeAll, infoUser, 
-          searchValue, openNavbar, itemLove
+          searchValue, openNavbar, itemLove, setVoucher
      }

@@ -38,7 +38,7 @@ const Admin = () => {
      <Routes>
           <Route path='/' element={<App />}>
                <Route path='/' element={<Homepage />} />
-               <Route path='/green-food' element={<Homepage />} />
+               <Route path='/big-green' element={<Homepage />} />
                <Route path='/trang-chu' element={<Homepage />} />
                <Route path='/gioi-thieu' element={<IntroductionPage />} />
                <Route path='/dat-hang' element={<OrderPage />} />

@@ -77,7 +77,7 @@ const DetailItem = () => {
                     <img src={item.image} alt='' className='w-full' />
                </div>
                <div className='flex-1'>
-                    <p className='text-3xl font-semibold'>{item.name}</p>
+                    <p className='text-3xl font-semibold mb:mt-3 mb:text-orange-500'>{item.name}</p>
                     <div className='flex my-3 mb:flex-col'>
                          <p className='text-lg'><span className='font-semibold'>Thương hiệu:</span> Limited</p>
                          <p className='mx-2 mb:hidden'>l</p>
@@ -97,7 +97,7 @@ const DetailItem = () => {
                     <div className='flex items-center py-6 border-t-2 border-b-2'>
                          <p>Số lượng</p>
                          <div className='flex items-center border-2 ml-5 mb:ml-2 sm:ml-3'>
-                              <p className='px-7 text-lg mb:px-2 sm:px-5'>{quantity}</p>
+                              <p className='px-7 text-lg mb:px-7 sm:px-5'>{quantity}</p>
                               <div className='grid grid-rows-2 border-l-2 text-lg'>
                                    <button className='border-b-2 px-2'
                                         onClick={() => {

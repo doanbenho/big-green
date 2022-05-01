@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { PaternProduct } from '../component/PaternProduct'
 import { removeAccents } from '../function/removeAccents'
+import { gototop } from '../map-content/ContentNews'
 import { content_products } from '../map-content/MapContent'
 import Context from '../reducer/Context'
 import HeaderOfPage from './HeaderOfPage'
@@ -54,12 +55,7 @@ const SearchPage = () => {
 
      const handleGetItemShow = value => {
           setProductsShow(products_search.slice(12*(value - 1), 12*value))
-          const timer = setInterval(() => {
-               document.documentElement.scrollTop -= 200;
-               if(document.documentElement.scrollTop <= 0) {
-                   clearInterval(timer)
-               }
-           }, 10)
+          gototop()
      }
 
   return (

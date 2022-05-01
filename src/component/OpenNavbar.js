@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import '../App.css'
+import { gototop } from '../map-content/ContentNews'
 import { openNavbar } from '../reducer/Actions'
 import Context from '../reducer/Context'
 
@@ -82,12 +83,7 @@ const OpenNavbar = () => {
                               style={currentPage.includes(item['url-to']) ? {'color': 'orange'} : {'color': 'black'}}
                               onClick={() => {
                                    dispatch(openNavbar(false))
-                                   const timer = setInterval(() => {
-                                        document.documentElement.scrollTop -= 500;
-                                        if(document.documentElement.scrollTop <= 0) {
-                                             clearInterval(timer)
-                                        }
-                                   }, 1)
+                                   gototop()
                               }}
                          >{item.title}</Link>
                    ))

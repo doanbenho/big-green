@@ -1,8 +1,8 @@
-import React, { useContext, useMemo, useRef, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { handleSendBooking } from '../function/logic_send'
 import Context from '../reducer/Context'
-import { infoUser } from '../reducer/Actions'
+import { infoUser, setVoucher } from '../reducer/Actions'
 
 
 const inputs = [
@@ -15,19 +15,18 @@ const PaymentPage = () => {
      const checkRef = useRef()
      const navigate = useNavigate()
      const consumer = useContext(Context)
-     const { items_in_cart } = consumer[0]
+     const { items_in_cart, set_voucher } = consumer[0]
      const dispatch = consumer[1]
-     const [ voucher, setVoucher ] = useState(100/100)
      const [ infoVoucher, setInfoVoucher ] = useState('')
 
      let total_price = useMemo(() => {
           let total = 0
           items_in_cart.forEach(item => {
                const price = Number(item['new-price'].replace('.', '').replace('.', ''))
-               total = (total + price*item.amount) * voucher
+               total = (total + price*item.amount) * set_voucher.percent
           })
           return total
-     }, [items_in_cart, voucher])
+     }, [items_in_cart, set_voucher])
 
      const total_quantity = useMemo(() => {
           let total = 0
@@ -37,6 +36,10 @@ const PaymentPage = () => {
 
           return total
      }, [items_in_cart])
+
+     useEffect(() => {
+          dispatch(setVoucher({"percent": 1, "is_voucher": false}))
+     }, [])
 
      
 
@@ -65,21 +68,22 @@ const PaymentPage = () => {
 
      const voucherRef = useRef()
      const handleVoucher = () => {
-          console.log(voucherRef.current.value)
-          if(voucherRef.current.value === '') {
-               setInfoVoucher('Nhập mã voucher!')
+          if(voucherRef.current.value === 'conghieudeptrai') {
                voucherRef.current.focus()
+               setInfoVoucher('Voucher giảm giá 50%.')
+               dispatch(setVoucher({"percent": 1/2, "is_voucher": true}))
+          } else {
+               if(voucherRef.current.value === '') {
+                    setInfoVoucher('Nhập mã voucher!')
                } else {
-                    if(voucherRef.current.value === 'conghieudeptrai') {
-                         setVoucher(50/100)
-                         setInfoVoucher('Voucher giảm giá 50%.')
-                    } else {
-                         setInfoVoucher('Voucher không tồn tại!')
-                         voucherRef.current.focus()
-                    }             
+                    setInfoVoucher('Voucher không tồn tại!')
+               }             
+               voucherRef.current.focus()
+                    dispatch(setVoucher({"percent": 1, "is_voucher": false}))
                }
           }
-    
+     
+          
      
 
 
@@ -138,7 +142,7 @@ const PaymentPage = () => {
                               <div className='mx-7 sm:mx-0 mb:mx-0'>
                                    <form className='flex flex-col'>
                                         <p className='text-xl font-semibold'>Vận chuyển</p>
-                                        <p className='mt-3 mb-7 pl-5 py-2 bg-blue-100 rounded-md '>Vui lòng nhập thông tin giao hàng</p>
+                                        <p className='mt-3 mb-7 text-center py-2 bg-blue-100 rounded-md '>Phí giao hàng 40.000<sup>đ</sup> mọi tỉnh thành</p>
                                         <p className='text-xl font-semibold'>Thanh toán</p>
                                         <div className='flex items-center justify-between mt-3 mb-1 py-3 border-2 rounded-md'>
                                              <input 
@@ -213,7 +217,15 @@ const PaymentPage = () => {
                          >
                               <div className='flex justify-between'>
                                    <p>Tạm tính</p>
-                                   <p>{total_price.toLocaleString() }<sup>đ</sup></p>
+                                   <div className='flex'>
+                                        {
+                                             set_voucher.is_voucher 
+                                             ?
+                                             <p className='bg-orange-600 text-white px-3 rounded-lg mr-2'>-{set_voucher.percent * 100}%</p>
+                                             :  null
+                                        }
+                                        <p>{total_price.toLocaleString() }<sup>đ</sup></p>
+                                   </div>
                               </div>
                               <div className='flex justify-between'>
                                    <p>Phí vận chuyển</p>

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { removeAll } from '../reducer/Actions'
+import { removeAll, setVoucher } from '../reducer/Actions'
 import Context from '../reducer/Context'
 
 const CompletePayment = () => {
 
      const navigate = useNavigate()
      const consumer = useContext(Context)
-     const { items_in_cart, info_user } = consumer[0]
+     const { items_in_cart, info_user, set_voucher } = consumer[0]
      const dispatch = consumer[1]
      const [ goOn, setGoOn ] = useState(false)
 
@@ -17,7 +17,7 @@ const CompletePayment = () => {
           let total = 0
           items_in_cart.forEach(item => {
                const price = Number(item['new-price'].replace('.', '').replace('.', ''))
-               total = total + price*item.amount
+               total = (total + price*item.amount) * set_voucher.percent 
           })
           return total
      }, [items_in_cart])
@@ -25,7 +25,7 @@ const CompletePayment = () => {
      const total_quantity = useMemo(() => {
           let total = 0
           items_in_cart.forEach(item => {
-               total = total + item.amount
+               total = (total + item.amount)
           })
 
           return total
@@ -43,6 +43,7 @@ const CompletePayment = () => {
                } else {
                     navigate('/trang-chu')
                }
+               dispatch(setVoucher({"percent": 1, "is_voucher": false}))
                localStorage.removeItem('items_in_cart')
                dispatch(removeAll(true))
           }
@@ -105,7 +106,10 @@ const CompletePayment = () => {
                          <div className='flex justify-end mt-10'>
                               <button 
                                    className='px-10 py-4 bg-blue-500 hover:bg-blue-700 text-white text-lg rounded-lg sm:mb-10 mb:mb-10' 
-                                   onClick={() => setGoOn(true)}     
+                                   onClick={() => {
+                                        setGoOn(true)
+                                        dispatch(setVoucher({"percent": 1, "is_voucher": false}))
+                                   }}     
                               >Tiếp tục mua hàng</button>
                          </div>
                     </div>
@@ -134,7 +138,15 @@ const CompletePayment = () => {
                               >
                                    <div className='flex justify-between'>
                                         <p>Tạm tính</p>
-                                        <p>{total_price.toLocaleString() }<sup>đ</sup></p>
+                                        <div className='flex'>
+                                             {
+                                                  set_voucher.is_voucher 
+                                                  ?
+                                                  <p className='bg-orange-600 text-white px-3 rounded-lg mr-2'>-{set_voucher.percent * 100}%</p>
+                                                  :  null
+                                             }
+                                             <p>{total_price.toLocaleString() }<sup>đ</sup></p>
+                                        </div>
                                    </div>
                                    <div className='flex justify-between'>
                                         <p>Phí vận chuyển</p>

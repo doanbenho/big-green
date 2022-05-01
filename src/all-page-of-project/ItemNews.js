@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { gototop } from '../map-content/ContentNews'
 
 const ItemNews = props => {
 
@@ -9,12 +10,7 @@ const ItemNews = props => {
      const handleShowContent = (item) => {
           navigate(`/tin-tuc/${item.id}`)
           console.log(item)
-          const timer = setInterval(() => {
-               document.documentElement.scrollTop -= 500;
-               if(document.documentElement.scrollTop <= 0) {
-                    clearInterval(timer)
-               }
-          }, 1)
+          gototop()
      }
 
   return (
