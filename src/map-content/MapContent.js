@@ -389,7 +389,7 @@ export const navigate_contact = [
           'id': 1,
           'icon': <i className="fa-solid fa-location-pin"></i>,
           'title': 'Địa chỉ',
-          'content': 'Đường Hà Huy Tập, phường Cam Phúc Bắc, thành Phố Cam Ranh ,tỉnh Khánh Hòa'
+          'content': 'Thôn Quảng Hòa, Xã Cam Thành Nam, thành Phố Cam Ranh ,tỉnh Khánh Hòa'
      },
      {
           'id': 2,
