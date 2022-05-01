@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Context from '../reducer/Context'
 import { icon_hiden_product } from '../map-content/MapContent'
 import { addItem, itemAwait, itemLove, openCart, setData } from '../reducer/Actions'
+import { gototop } from '../map-content/ContentNews'
 
 export const PaternProduct = props => {
 
@@ -31,8 +32,10 @@ export const PaternProduct = props => {
      }
 
      const onOpenDetail = (target, item) => {
-          if ( target.className.includes('show-choice-product') )
+          if ( target.className.includes('show-choice-product') ) {
                navigatee(`/san-pham/${item.name}`)
+               gototop()
+          }
      }
 
   return (
