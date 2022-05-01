@@ -401,7 +401,7 @@ export const navigate_contact = [
           'id': 3,
           'icon': <i className="fa-solid fa-envelope-open-text"></i>,
           'title': 'Email',
-          'content': 'donbenho@gmail.com'
+          'content': 'shopEmail@gmail.com'
      }
 ]
 

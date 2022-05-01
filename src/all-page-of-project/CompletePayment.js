@@ -63,7 +63,7 @@ const CompletePayment = () => {
                               <div className='flex flex-col'>
                                    <p className='text-xl font-semibold mb-1'>Cảm ơn bạn đã đặt hàng</p>
                                    <div className='text-sm grid mt-1'>
-                                        <p className=''>Một email xác nhận đã được gửi tới conghieucoconcuto@gmail.com.</p>
+                                        <p className=''>Một email xác nhận đã được gửi tới yourEmail@gmail.com.</p>
                                         <p>Xin vui lòng kiểm tra email của bạn</p>
                                    </div>
                               </div>
