@@ -41,17 +41,19 @@ const DetailItem = () => {
           if(addCart) {
                item.amount = quantity
                if(is_user) {
-                    dispatch(setData([]))
                     dispatch(addItem(item))
                     dispatch(openCart(true))
-                    setQuantity(1)
                } else {
                     navigate('/dang-nhap')
-                    dispatch(setData([]))
                     dispatch(itemAwait(item))
                }
                setAddCart(false)
           } 
+          
+          return () => {
+               setQuantity(1)
+               dispatch(setData([]))
+          }
 
      }, [addCart])
 
@@ -102,15 +104,13 @@ const DetailItem = () => {
                                    <button className='border-b-2 px-2'
                                         onClick={() => {
                                              setQuantity(prev => prev + 1)
-                                             item.amount +=1
                                         }}
                                    >+</button>
                                    <button
                                         onClick={() => {
                                              if(item.amount < 2) {
-                                                  item.amount = 1
+                                                  setQuantity(1)
                                              } else {
-                                                  item.amount -= 1 
                                                   setQuantity(prev => prev - 1)
                                              }}
                                         }

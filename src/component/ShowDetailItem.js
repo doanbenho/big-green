@@ -15,6 +15,20 @@ const ShowDetailItem = () => {
 
      const [ quantity, setQuantity ] = useState(1 || data_item.amount)
 
+     const handleAddItem = () => {
+          data_item.amount = quantity
+          if(is_user) {
+               dispatch(setData([]))
+               dispatch(addItem(data_item))
+               dispatch(openCart(true))
+               setQuantity(1)
+          } else {
+               navigate('/dang-nhap')
+               dispatch(setData([]))
+               dispatch(itemAwait(data_item))
+          }
+     }
+
 
      return (
           <section className='fixed top-0 left-0 w-full h-full z-10 justify-center items-center'
@@ -24,7 +38,6 @@ const ShowDetailItem = () => {
                     onClick={() => {
                          dispatch(setData([]))
                          setQuantity(1)
-                         data_item.amount = 1
                     }}
                ></span>
                <div className='w-2/3 bg-white z-10 grid grid-cols-2 gap-5 px-5 py-10 mb:flex flex-col mb:w-5/6 sm:w-5/6'>
@@ -50,16 +63,14 @@ const ShowDetailItem = () => {
                                         <div className='grid grid-rows-2 border-l-2 text-lg'>
                                              <button className='border-b-2 px-2'
                                                   onClick={() => {
-                                                      data_item.amount += 1 
                                                       setQuantity(prev => prev + 1)
                                                   }}
                                              >+</button>
                                              <button
                                                   onClick={() => {
                                                        if(data_item.amount < 2) {
-                                                            data_item.amount = 1
+                                                            setQuantity(1)
                                                        } else {
-                                                            data_item.amount -= 1 
                                                             setQuantity(prev => prev - 1)
                                                        }}
                                                   }
@@ -70,18 +81,7 @@ const ShowDetailItem = () => {
                          </div>
                          <div className='mt-5'>
                               <button className='px-5 py-3 bg-orange-500 text-white text-xl rounded-xl mb:w-full mb:px-2 mb:text-base sm:px-3 sm:text-base'
-                                   onClick={() => {
-                                        if(is_user) {
-                                             dispatch(setData([]))
-                                             dispatch(addItem(data_item))
-                                             dispatch(openCart(true))
-                                             setQuantity(1)
-                                        } else {
-                                             navigate('/dang-nhap')
-                                             dispatch(setData([]))
-                                             dispatch(itemAwait(data_item))
-                                        }
-                                   }}
+                                   onClick={() => handleAddItem()}
                               >Thêm vào giỏ hàng</button>
                          </div>
                     </div>
