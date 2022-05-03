@@ -74,9 +74,9 @@ export const PaternProduct = props => {
                <div className='flex flex-col items-center'>
                     <p className='my-3 text-neutral-600 text-center text-lg font-mono mb:text-base'>{item.name}</p>
                     <div className='flex items-center  '>
-                         <p className='text-orange-400 text-2xl font-bold mr-5 mb:text-lg'>{item['new-price']}<sup>đ</sup></p>
+                         <p className='text-orange-400 text-2xl font-bold mr-5 mb:text-base mb:mr-2'>{item['new-price']}<sup>đ</sup></p>
                          {
-                              item.sell.isSell && <p className='line-through text-neutral-500 font-semibold text-lg'>{item.sell['old-price']}<sup>đ</sup></p>
+                              item.sell.isSell && <p className='line-through text-neutral-500 font-semibold text-lg mb:text-sm'>{item.sell['old-price']}<sup>đ</sup></p>
                          }
                     </div>
                </div>

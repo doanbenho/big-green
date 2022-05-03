@@ -24,6 +24,7 @@ const ShowDetailItem = () => {
                     onClick={() => {
                          dispatch(setData([]))
                          setQuantity(1)
+                         data_item.amount = 1
                     }}
                ></span>
                <div className='w-2/3 bg-white z-10 grid grid-cols-2 gap-5 px-5 py-10 mb:flex flex-col mb:w-5/6 sm:w-5/6'>

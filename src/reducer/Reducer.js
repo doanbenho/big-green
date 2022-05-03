@@ -32,7 +32,7 @@ const reducer = (state, action) => {
                }
                break;
           case ADD_ITEM:
-               const item_cart = state.items_in_cart.find(item => item.id === action.payload.id)
+               const item_cart = state.items_in_cart.find(item => item.name === action.payload.name)
 
                if(!item_cart) {
                     data = {
@@ -41,8 +41,8 @@ const reducer = (state, action) => {
                     }
                } else {
                     let new_item = [...state.items_in_cart]
-                    const objIndex = new_item.findIndex(obj => obj.id === action.payload.id)
-                    new_item[objIndex].amount += action.payload.amount
+                    const objName = new_item.findIndex(obj => obj.name === action.payload.name)
+                    new_item[objName].amount += action.payload.amount
                     data = {
                          ...state,
                          items_in_cart: new_item
