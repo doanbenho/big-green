@@ -9,17 +9,18 @@ const DetailItem = () => {
 
      const { name } = useParams()
 
-     const item = content_products.find(item => {
+     let get_item = content_products.find(item => {
           return item.name === name 
      })
+
 
      const consumer = useContext(Context)
      const { is_user } = consumer[0]
      const dispatch = consumer[1]
      const navigate = useNavigate()
-     const [ quantity, setQuantity ] = useState(1)
-     const [ addCart, setAddCart ] = useState(false)
-     const [ buy, setBuy ] = useState(false)
+     const [ quantity, setQuantity ] = useState(get_item.amount)
+     const [ itemBuy, setItemBuy ] = useState(false)
+     const [ itemAdd, setItemAdd ] = useState(false)
 
 
      const handleOpenContext = target => {
@@ -38,61 +39,60 @@ const DetailItem = () => {
      }
 
      useEffect(() => {
-          if(addCart) {
-               item.amount = quantity
+          if(itemAdd) {
+               // get_item.amount = quantity
+               localStorage.setItem('quantity', quantity)
                if(is_user) {
-                    dispatch(addItem(item))
+                    dispatch(addItem(get_item))
                     dispatch(openCart(true))
                } else {
                     navigate('/dang-nhap')
-                    dispatch(itemAwait(item))
+                    dispatch(itemAwait(get_item))
                }
-               setAddCart(false)
-          } 
-          
-          return () => {
-               setQuantity(1)
                dispatch(setData([]))
+               setItemAdd(false)
           }
-
-     }, [addCart])
-
+          setQuantity(1)
+     }, [itemAdd])
+     
+     
      useEffect(() => {
-          if (buy) {
-               item.amount = quantity
+          if(itemBuy) {
+               get_item.amount = quantity
                if(is_user) {
-                    dispatch(addItem(item))
-                    setQuantity(1)
+                    dispatch(addItem(get_item))
                     navigate('/thanh-toan')
                } else {
                     navigate('/dang-nhap')
-                    dispatch(itemAwait(item))
+                    dispatch(itemAwait(get_item))
                }
-               setBuy(false)
+               dispatch(setData([]))
+               setItemBuy(false)
           }
-     }, [buy])
+          setQuantity(1)
+     }, [itemBuy])
 
   return (
      <div className='width-screen mt-10 mb-20'>
           <div className='flex sm:flex-col mb:flex-col'>
                <div className='w-1/2 border-2 mr-5 mb:w-full sm:w-full'>
-                    <img src={item.image} alt='' className='w-full' />
+                    <img src={get_item.image} alt='' className='w-full' />
                </div>
                <div className='flex-1'>
-                    <p className='text-3xl font-semibold mb:mt-3 mb:text-orange-500'>{item.name}</p>
+                    <p className='text-3xl font-semibold mb:mt-3 mb:text-orange-500'>{get_item.name}</p>
                     <div className='flex my-3 mb:flex-col'>
                          <p className='text-lg'><span className='font-semibold'>Thương hiệu:</span> Limited</p>
                          <p className='mx-2 mb:hidden'>l</p>
                          <p className='text-lg'><span className='font-semibold'>Tình trạng:</span> Còn hàng</p>
                     </div>
                     <div className='flex items-center mb-5'>
-                         <p className='text-3xl font-semibold text-green-500'>{item['new-price']}</p>
+                         <p className='text-3xl font-semibold text-green-500'>{get_item['new-price']}</p>
                          {
-                              item.sell.isSell
+                              get_item.sell.isSell
                               &&
                               <React.Fragment>
-                                   <p className='mx-5 line-through text-xl opacity-50'>{item.sell['old-price']}</p>
-                                   <p className='px-2 bg-orange-600 rounded-sm text-white font-bold'>{item.sell['per-sell']}</p>
+                                   <p className='mx-5 line-through text-xl opacity-50'>{get_item.sell['old-price']}</p>
+                                   <p className='px-2 bg-orange-600 rounded-sm text-white font-bold'>{get_item.sell['per-sell']}</p>
                               </React.Fragment>
                          }
                     </div>
@@ -105,10 +105,10 @@ const DetailItem = () => {
                                         onClick={() => {
                                              setQuantity(prev => prev + 1)
                                         }}
-                                   >+</button>
+                                        >+</button>
                                    <button
                                         onClick={() => {
-                                             if(item.amount < 2) {
+                                             if(quantity < 2) {
                                                   setQuantity(1)
                                              } else {
                                                   setQuantity(prev => prev - 1)
@@ -122,14 +122,14 @@ const DetailItem = () => {
                     <div className='grid grid-cols-2 tb-mb:grid-cols-1 gap-5'>
                          <div 
                               className='flex flex-col items-center px-5 py-2 bg-orange-500 hover:bg-green-600 cursor-pointer text-white rounded-xl lg:px-3'
-                              onClick={() => setBuy(true)}              
+                              onClick={() => setItemBuy(true)}              
                          >
                               <p className='text-xl font-semibold'>MUA NGAY</p>
                               <p className='text-sm'>Giao hàng tận tay quý khách</p>
                          </div>
                          <div 
                               className='flex flex-col items-center px-5 py-2 bg-orange-100 hover:bg-green-600 cursor-pointer hover:text-white hover:border-green-600 text-orange-500 border-2 border-orange-500 rounded-xl lg:px-3'
-                              onClick={() => setAddCart(true)}                                           
+                              onClick={() => setItemAdd(true)}                                           
                          >     
                               <p className='text-xl font-semibold'>CHO VÀO GIỎ</p>
                               <p className='text-sm'>Thêm vào giỏ hàng để chọn tiếp</p>

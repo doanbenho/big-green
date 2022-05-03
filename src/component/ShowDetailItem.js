@@ -13,20 +13,20 @@ const ShowDetailItem = () => {
      const dispatch = consumer[1]
 
 
-     const [ quantity, setQuantity ] = useState(1 || data_item.amount)
+     const [ quantity, setQuantity ] = useState(1)
 
-     const handleAddItem = () => {
-          data_item.amount = quantity
+
+     const handleBuyItem = () => {
+          localStorage.setItem('quantity', quantity)
           if(is_user) {
-               dispatch(setData([]))
                dispatch(addItem(data_item))
                dispatch(openCart(true))
-               setQuantity(1)
           } else {
                navigate('/dang-nhap')
-               dispatch(setData([]))
                dispatch(itemAwait(data_item))
           }
+          dispatch(setData([]))
+          setQuantity(1)
      }
 
 
@@ -81,7 +81,7 @@ const ShowDetailItem = () => {
                          </div>
                          <div className='mt-5'>
                               <button className='px-5 py-3 bg-orange-500 text-white text-xl rounded-xl mb:w-full mb:px-2 mb:text-base sm:px-3 sm:text-base'
-                                   onClick={() => handleAddItem()}
+                                   onClick={() => handleBuyItem()}
                               >Thêm vào giỏ hàng</button>
                          </div>
                     </div>

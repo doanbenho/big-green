@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Context from '../reducer/Context'
 import { icon_hiden_product } from '../map-content/MapContent'
-import { addItem, itemAwait, itemLove, openCart, setData } from '../reducer/Actions'
+import { addItem, itemAwait, openCart, setData } from '../reducer/Actions'
 import { gototop } from '../map-content/ContentNews'
 
 export const PaternProduct = props => {
@@ -19,16 +19,14 @@ export const PaternProduct = props => {
                dispatch(setData(data))
           } else if (index === 2) {
                if(is_user || localStorage.getItem('login')) {
-                    data.amount = 1
+                    localStorage.setItem('quantity', 1)
                     dispatch(addItem(data))
                     dispatch(openCart(true))
                } else {
                     navigatee('/dang-nhap')
                     dispatch(itemAwait(data))
                }
-          } else {
-               dispatch(itemLove(data))
-          }
+          } 
      }
 
      const onOpenDetail = (target, item) => {

@@ -32,7 +32,8 @@ const reducer = (state, action) => {
                }
                break;
           case ADD_ITEM:
-               const item_cart = state.items_in_cart.find(item => item.name === action.payload.name)
+               
+               const item_cart = state.items_in_cart.find(item => item.id === action.payload.id)
 
                if(!item_cart) {
                     data = {
@@ -41,11 +42,17 @@ const reducer = (state, action) => {
                     }
                } else {
                     let new_item = [...state.items_in_cart]
-                    const objName = new_item.findIndex(obj => obj.name === action.payload.name)
-                    new_item[objName].amount += action.payload.amount
+                    let number = Number(localStorage.getItem('quantity'))
+                    console.log(number)
+                    new_item.forEach((item) => {
+                         if(item.name === action.payload.name) {
+                              item.amount += number
+                              console.log(item.amount)  
+                         }
+                    })
                     data = {
                          ...state,
-                         items_in_cart: new_item
+                         items_in_cart: [...new_item]
                     }
                }
                break;
@@ -55,7 +62,7 @@ const reducer = (state, action) => {
                newArray.splice(action.payload, 1)
                data = {
                     ...state,
-                    items_in_cart: newArray
+                    items_in_cart: [...newArray]
                }
                break;
           case REMOVE_ALL:
@@ -63,7 +70,7 @@ const reducer = (state, action) => {
                arrayRemoveAll.splice(0, arrayRemoveAll.length)
                data = {
                     ...state,
-                    items_in_cart: arrayRemoveAll
+                    items_in_cart: [...arrayRemoveAll]
                }
                break;
           case DECREASE_ITEM:
