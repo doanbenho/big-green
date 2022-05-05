@@ -22,7 +22,7 @@ const ShowDetailItem = () => {
                dispatch(addItem(data_item))
                dispatch(openCart(true))
           } else {
-               navigate('/dang-nhap')
+               navigate('/big-green/dang-nhap')
                dispatch(itemAwait(data_item))
           }
           dispatch(setData([]))

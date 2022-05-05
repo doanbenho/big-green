@@ -49,7 +49,7 @@ const MenuCart = () => {
                               <i className="fa-solid fa-wallet max-w-max text-xl"
                                    onClick={() => {
                                         dispatch(openCart(false))
-                                        navigate('/san-pham')
+                                        navigate('/big-green/san-pham')
                                         gototop()
                                    }}
                               ></i>
@@ -103,7 +103,7 @@ const MenuCart = () => {
                                    <button 
                                         className='w-full py-2 bg-orange-500 hover:bg-green-600 font-semibold text-lg text-white rounded-3xl mt-5'
                                         onClick={() => {
-                                             navigate('/thanh-toan')
+                                             navigate('/big-green/thanh-toan')
                                              dispatch(openCart(false))
                                         }}     
                                    >Thanh toán</button>

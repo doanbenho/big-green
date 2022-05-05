@@ -32,7 +32,7 @@ const NavbarTablet = () => {
                     <i className="fa-solid fa-bars text-4xl mb:text-2xl"></i>
                </div>
                <div className='w-1/4'
-                    onClick={() => navigate('/trang-chu')}
+                    onClick={() => navigate('/big-green/trang-chu')}
                >
                     <img src={logo} alt='' className='w-full h-full' />
                </div>

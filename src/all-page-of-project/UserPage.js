@@ -19,7 +19,7 @@ const UserPage = () => {
      useEffect(() => {
           const had_login = is_user
           if( !had_login ) {
-               navigate('/dang-nhap')
+               navigate('/big-green/dang-nhap')
                dispatch(removeAll(true))
           }
           console.log('running ....')

@@ -18,7 +18,7 @@ const RegisterPage = () => {
                is_user
                ?               
                <p
-                    onClick={() => navigate('/nguoi-dung')}
+                    onClick={() => navigate('/big-green/nguoi-dung')}
                     className='text-4xl text-center mt-10 mb-20 cursor-pointer hover:text-orange-500 mb:text-xl'
                >Bạn đã đăng nhập thành công</p>
                :
@@ -30,7 +30,7 @@ const RegisterPage = () => {
                     > Đã có tài khoản, đăng nhập 
                          <span
                               className='text-green-600 ml-1 hover:underline cursor-pointer'
-                              onClick={() => navigate('/dang-nhap')}
+                              onClick={() => navigate('/big-green/dang-nhap')}
                          >tại đây</span>
                     </p>
                     <form className='grid gap-5 my-5 w-full'>

@@ -13,7 +13,7 @@ const NewsPage = () => {
      const navigate = useNavigate()
 
      const handleShowContent = (item) => {
-          navigate(`/tin-tuc/${item.id}`)
+          navigate(`/big-green/tin-tuc/${item.id}`)
           gototop()
      }
 

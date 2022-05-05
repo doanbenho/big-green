@@ -41,32 +41,32 @@ export const navigate = [
      {
           'id': 1,
           'title': 'trang chủ',
-          'url-to': 'trang-chu'
+          'url-to': 'big-green/trang-chu'
      },
      {
           'id': 2,
           'title': 'giới thiệu',
-          'url-to': 'gioi-thieu'
+          'url-to': 'big-green/gioi-thieu'
      },
      {
           'id': 3,
           'title': 'sản phẩm',
-          'url-to': 'san-pham'
+          'url-to': 'big-green/san-pham'
      },
      {
           'id': 4,
           'title': 'đặt hàng',
-          'url-to': 'dat-hang'
+          'url-to': 'big-green/dat-hang'
      },
      {
           'id': 5,
           'title': 'tin tức',
-          'url-to': 'tin-tuc'
+          'url-to': 'big-green/tin-tuc'
      },
      {
           'id': 6,
           'title': 'liên hệ',
-          'url-to': 'lien-he'
+          'url-to': 'big-green/lien-he'
      },
 ] 
 
@@ -74,17 +74,17 @@ export const info_user = [
      {
           'id': 1,
           'title': 'Đăng ký',
-          'url-to': 'dang-ky'
+          'url-to': 'big-green/dang-ky'
      },
      {
           'id': 2,
           'title': 'Đăng nhập',
-          'url-to': 'dang-nhap'
+          'url-to': 'big-green/dang-nhap'
      },
      {
           'id': 3,
           'title': 'Yêu thích',
-          'url-to': 'yeu-thich'
+          'url-to': 'big-green/yeu-thich'
      }
 ]
 

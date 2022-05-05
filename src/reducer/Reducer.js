@@ -36,6 +36,9 @@ const reducer = (state, action) => {
                const item_cart = state.items_in_cart.find(item => item.id === action.payload.id)
 
                if(!item_cart) {
+                    let number = Number(localStorage.getItem('quantity'))
+                    // console.log(number)
+                    action.payload.amount += number - 1
                     data = {
                          ...state,
                          items_in_cart: [...state.items_in_cart, action.payload]
@@ -43,11 +46,9 @@ const reducer = (state, action) => {
                } else {
                     let new_item = [...state.items_in_cart]
                     let number = Number(localStorage.getItem('quantity'))
-                    console.log(number)
                     new_item.forEach((item) => {
                          if(item.name === action.payload.name) {
                               item.amount += number
-                              console.log(item.amount)  
                          }
                     })
                     data = {

@@ -62,7 +62,7 @@ const PaymentPage = () => {
           }
           const checkInputs = handleSendBooking(inputs, undefined)
           if(checkRef.current.checked && checkInputs) {
-               navigate('/hoan-thanh-thanh-toan')
+               navigate('/big-green/hoan-thanh-thanh-toan')
           }
      }
 
@@ -98,7 +98,7 @@ const PaymentPage = () => {
                     <p className='text-orange-600 mb-5'>Chưa có sản phẩm nào!</p>
                     <button 
                          className='px-3 py-2 text-sm bg-blue-500 hover:bg-blue-800 text-white rounded-md'
-                         onClick={() => navigate('/san-pham')}
+                         onClick={() => navigate('/big-green/san-pham')}
                     >Quay lại giỏ hàng</button>
                </div>
                :
@@ -240,7 +240,7 @@ const PaymentPage = () => {
                               <div className='flex items-centers justify-between mt-5'>
                                    <p 
                                         className='hover:underlines text-blue-500 cursor-pointer'
-                                        onClick={() => navigate('/san-pham')}
+                                        onClick={() => navigate('/big-green/san-pham')}
                                    >Quay về giỏ hàng</p>
                                    <button 
                                         className='px-5 py-2 bg-blue-500 hover:bg-blue-800 text-white rounded-md'

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { removeAccents } from '../function/removeAccents'
 import { setupproducts } from '../fakeAPI'
 import { gototop } from '../map-content/ContentNews'
+import { useNavigate } from 'react-router-dom'
 
 
 setupproducts()
@@ -20,11 +21,12 @@ const ContentProductsPage = () => {
      const [ showBanner, setShowBanner ] = useState(false)
      const [ totalItems, setTotalItems ] = useState([])
      const [ count, setCount ] = useState(1)
+     const navigates = useNavigate()
 
 
 
      useEffect(() => {
-          fetch("api/products")
+          fetch("/api/products")
           .then(res => res.json())
           .then(res => setTotalItems(res.products))
           .catch(err => console.log(err))
@@ -174,8 +176,11 @@ return (
                                    onClick={() => handleSortPrice()}
                          >Lộc giá</button>
                          </div>
-                         <div>
-                              <img src={banner_sidebar} alt='' />
+                         <div 
+                              className='mb-2'
+                              onClick={() => navigates('/big-green/trang-chu')}
+                         >
+                              <img src={banner_sidebar} alt='' className='mb:w-full'/>
                          </div>
                     </div>
                </div>

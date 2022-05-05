@@ -37,29 +37,29 @@ const Admin = () => {
   return (
      <Routes>
           <Route path='/' element={<App />}>
-               <Route path='/' element={<Homepage />} />
+               {/* <Route path='/' element={<Homepage />} /> */}
                <Route path='/big-green' element={<Homepage />} />
-               <Route path='/trang-chu' element={<Homepage />} />
-               <Route path='/gioi-thieu' element={<IntroductionPage />} />
-               <Route path='/dat-hang' element={<OrderPage />} />
-               <Route path='/tin-tuc' element={<NewsPage />}>
+               <Route path='/big-green/trang-chu' element={<Homepage />} />
+               <Route path='/big-green/gioi-thieu' element={<IntroductionPage />} />
+               <Route path='/big-green/dat-hang' element={<OrderPage />} />
+               <Route path='/big-green/tin-tuc' element={<NewsPage />}>
                     <Route path='' element={<MainContent />} />
                     <Route path=':id' element={<ContentNews />} />
                </Route>
-               <Route path='/lien-he' element={<ContactPage />} />
-               <Route path='/san-pham' element={<ProductPage />}>
+               <Route path='/big-green/lien-he' element={<ContactPage />} />
+               <Route path='/big-green/san-pham' element={<ProductPage />}>
                     <Route path='' element={<ContentProductsPage />} />
                     <Route path=':name' element={<DetailItem />} />
                </Route>
-               <Route path='/dang-ky' element={<RegisterPage />} />
-               <Route path='/dang-nhap' element={<LoginPage />} />
-               <Route path='/nguoi-dung' element={<UserPage />} />
-               <Route path='/tim-kiem' element={<SearchPage />} />
+               <Route path='/big-green/dang-ky' element={<RegisterPage />} />
+               <Route path='/big-green/dang-nhap' element={<LoginPage />} />
+               <Route path='/big-green/nguoi-dung' element={<UserPage />} />
+               <Route path='/big-green/tim-kiem' element={<SearchPage />} />
                <Route path='*' element={<NotFoundPage />} />
           </Route>
-          <Route path='/thanh-toan' element={<PaymentPage />} />
-          <Route path='/hoan-thanh-thanh-toan' element={<CompletePayment />} />
-          <Route path='/not-found' element={<NotFoundPage404 />} />
+          <Route path='/big-green/thanh-toan' element={<PaymentPage />} />
+          <Route path='/big-green/hoan-thanh-thanh-toan' element={<CompletePayment />} />
+          <Route path='/big-green/not-found' element={<NotFoundPage404 />} />
           <Route path='*' element={<NotFoundPage404 />} />
      </Routes>
   )

@@ -27,12 +27,11 @@ const App = () => {
      const [ navbar, setNavbar ] = useState(false)
      const navigater = useNavigate()
      const location = useLocation()
-     const [ currentPage, setCurrentPage ] = useState('/trang-chu')
+     const [ currentPage, setCurrentPage ] = useState('/big-reen/trang-chu')
 
      
      useEffect(() => {
-          if(location.pathname === '/') setCurrentPage('/trang-chu')
-          else setCurrentPage(location.pathname)
+          setCurrentPage(location.pathname)
      }, [location.pathname])
 
      const total_quantity = useMemo(() => {
@@ -71,16 +70,16 @@ const App = () => {
         
      const handleAccessUser = () => {
           if(is_user || localStorage.getItem('login')) {
-               navigater('/nguoi-dung')
+               navigater('/big-green/nguoi-dung')
           }  else {
-               navigater('/dang-nhap')     
+               navigater('/big-green/dang-nhap')     
           }
 
      }
 
      const handleSearchProducts = () => {
           dispatch(searchValue(searchRef.current.value))
-          navigater('/tim-kiem')
+          navigater('/big-green/tim-kiem')
      }
           
      return (
@@ -112,7 +111,7 @@ const App = () => {
                     </div>
                     <div className='absolute tb-mb:hidden'
                          style={{'top': '50%', 'left': '50%', 'transform': 'translate(-50%, -50%)'}}
-                         onClick={() => navigater('/trang-chu')}
+                         onClick={() => navigater('/big-green/trang-chu')}
                     >
                          <img src={logo} alt='' className=''/>
                     </div>

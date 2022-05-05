@@ -23,7 +23,7 @@ export const PaternProduct = props => {
                     dispatch(addItem(data))
                     dispatch(openCart(true))
                } else {
-                    navigatee('/dang-nhap')
+                    navigatee('/big-green/dang-nhap')
                     dispatch(itemAwait(data))
                }
           } 
@@ -31,7 +31,7 @@ export const PaternProduct = props => {
 
      const onOpenDetail = (target, item) => {
           if ( target.className.includes('show-choice-product') ) {
-               navigatee(`/san-pham/${item.name}`)
+               navigatee(`/big-green/san-pham/${item.name}`)
                gototop()
           }
      }

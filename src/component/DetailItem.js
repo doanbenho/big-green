@@ -58,7 +58,7 @@ const DetailItem = () => {
      
      useEffect(() => {
           if(itemBuy) {
-               get_item.amount = quantity
+               localStorage.setItem('quantity', quantity)
                if(is_user) {
                     dispatch(addItem(get_item))
                     navigate('/thanh-toan')

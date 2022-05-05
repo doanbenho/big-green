@@ -14,7 +14,7 @@ const HeaderOfPage = props => {
                     <div className='flex text-white'>
                          <p 
                               className='hover:underline cursor-pointer'
-                              onClick={() => navigate('/trang-chu')}
+                              onClick={() => navigate('/big-green/trang-chu')}
                          >Trang chủ</p>
                          <i className="fa-solid fa-arrow-right mx-5 mb:mx-3 self-center mt-1"></i>
                          <p className='text-green-500 first-letter:uppercase'>{props.title}</p>

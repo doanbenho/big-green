@@ -15,7 +15,7 @@ const NotFoundPage = () => {
                     <p>Not Found 404</p>
                     <button className='px-5 py-2 bg-green-600 text-white text-sm mt-5 rounded-2xl'
                          onClick={() => {
-                              navigate('/trang-chu')
+                              navigate('/big-green/trang-chu')
                          }}
                     >comeback homepage</button>
                </div>

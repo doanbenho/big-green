@@ -34,14 +34,14 @@ const CompletePayment = () => {
 
      useEffect(() => {
           if(items_in_cart.length === 0) {
-               navigate('/not-found')
+               navigate('/big-green/not-found')
           }
 
           return () => {
                if(goOn) {
-                    navigate('/san-pham')
+                    navigate('/big-green/san-pham')
                } else {
-                    navigate('/trang-chu')
+                    navigate('/big-green/trang-chu')
                }
                dispatch(setVoucher({"percent": 1, "is_voucher": false}))
                localStorage.removeItem('items_in_cart')
