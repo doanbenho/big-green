@@ -9,7 +9,6 @@ const ItemNews = props => {
      
      const handleShowContent = (item) => {
           navigate(`/big-green/tin-tuc/${item.id}`)
-          console.log(item)
           gototop()
      }
 

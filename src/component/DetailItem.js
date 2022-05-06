@@ -46,7 +46,7 @@ const DetailItem = () => {
                     dispatch(addItem(get_item))
                     dispatch(openCart(true))
                } else {
-                    navigate('big-green/dang-nhap')
+                    navigate('/big-green/dang-nhap')
                     dispatch(itemAwait(get_item))
                }
                dispatch(setData([]))
@@ -61,9 +61,9 @@ const DetailItem = () => {
                localStorage.setItem('quantity', quantity)
                if(is_user) {
                     dispatch(addItem(get_item))
-                    navigate('big-green/thanh-toan')
+                    navigate('/big-green/thanh-toan')
                } else {
-                    navigate('big-green/dang-nhap')
+                    navigate('/big-green/dang-nhap')
                     dispatch(itemAwait(get_item))
                }
                dispatch(setData([]))

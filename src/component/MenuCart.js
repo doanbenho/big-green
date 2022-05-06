@@ -22,6 +22,12 @@ const MenuCart = () => {
           return total.toLocaleString() 
      }, [items_in_cart])
 
+     const handleShowDetail = (item) => {
+          navigate(`/big-green/san-pham/${item.name}`)
+          dispatch(openCart(false))
+          gototop()
+     }
+
   return (
      <React.Fragment>    
           <div className=''>
@@ -61,10 +67,17 @@ const MenuCart = () => {
                                    {
                                         items_in_cart.map((item, index) => (
                                              <div className='flex mb-5' key={index}>
-                                                  <img src={item.image} alt='' className='w-20'/>
+                                                  <img 
+                                                       src={item.image} 
+                                                       alt='' 
+                                                       className='w-20'
+                                                       onClick={() => handleShowDetail(item)}
+                                                  />
                                                   <div className='flex-1 ml-3 flex justify-between items-center'>
                                                        <div className='flex flex-col'>
-                                                            <p className=''>{item.name}</p>
+                                                            <p className='cursor-pointer hover:underline hover:text-green-600'
+                                                                 onClick={() => handleShowDetail(item)}
+                                                            >{item.name}</p>
                                                             <p className='my-1 text-sm'>So luong</p>
                                                             <div className='flex border-2 max-w-max cursor-pointer'>
                                                                  <button className='px-2 border-r-2'
